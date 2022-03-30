@@ -1,0 +1,91 @@
+{% extends 'main/base.html' %}
+
+{% load static %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+
+
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        <strong>Message:</strong> {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endfor %}
+
+    {% if user.is_authenticated %}
+    <h3>Hello {{ user }}</h3>
+        <h4>You are successfully logged in.</h4>
+             <button type="submit"><a href="/signout"> SignOut</a></button>
+
+                 {% else %}
+
+                <button type="button" class="btn btn-outline-primary"><a href="/signup"> SignUp</a>
+                    <button type="button" class="btn btn-outline-primary"><a href="/signin"> SignIn</a>
+                         {% endif %}
+
+
+     </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="mt-4 p-5 bg-success text-white rounded">
+          <h1>Learn Mandarin with Mrs Meruyert</h1>
+          <p class="h4">Learning mandarin is FUN! Choose the level of the language you would like to learn and follow the curriculum</p>
+        </div>
+         </div>
+
+<div class="row mx-auto p-auto">
+    <div class="col-sm-6">
+        <h1 class="display-6">Top 5 Reasons to Learn Chinese</h1>
+        <p class="h4">1. Chinese is the most widely spoken language in the world.</p>
+        <p class="h4">2. The Chinese language is a portal into an amazing culture. </p>
+        <p class="h4">3. Chinese proficiency creates countless economic opportunities. </p>
+        <p class="h4">4. Chinese proficiency unlocks easy travel in the Middle Kingdom. </p>
+        <p class="h4">5. Language acquisition advances your brain function!</p>
+    </div>
+
+    <div class="col-sm-6 mx-auto p-auto">
+        <img class="img-fluid" src="{% static 'main/Flag_of_China_.png' %}" class="m-auto p-auto" alt="Flag of China">
+     </div>
+
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-6 mx-auto p-auto">
+      <img class="img-thumbnail" src="{% static 'main/han.png' %}" class="m-auto p-auto" alt="China">
+    </div>
+
+
+
+     <div class="col-sm-6">
+         <h1 class="display-12">Learn Mandarin with the best teacher</h1>
+         <p class="h3">Mrs Meruyert has over 10 years experience of teaching Mandarin as a Foreign Language. She has developed her own methodology. Feel free to download resources from this website and contact Mrs Meruyert for private lessons.</p>
+     </div>
+
+
+    <div class="mt-4 p-5 bg-primary text-white rounded">
+    <h1>Check the descriptors of the HSK levels and  their equivalencies in CEFR. Then choose the one from which you would like to start/continue your journey of learning Chinese!</h1>
+    {% if tasks %}
+        {% for el in tasks%}
+            <div class="alert alert-warning mt-2">
+                <h3>{{ el.title }}</h3>
+                <p>{{ el.task }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>We have no actions yet</p>
+    {% endif %}
+
+
+
+
+{% endblock %}
+
+
